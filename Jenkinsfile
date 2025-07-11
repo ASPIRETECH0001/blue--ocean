@@ -9,7 +9,7 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             echo 'hello'
           }
@@ -18,7 +18,7 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
         sleep 3
       }
@@ -26,6 +26,7 @@ pipeline {
 
     stage('final') {
       steps {
+        slackSend(channel: 'new-channel', message: 'hi')
         sh '''touch a.txt
 ls
 echo "hello world"'''
